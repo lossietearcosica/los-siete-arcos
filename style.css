@@ -1,0 +1,830 @@
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#080908;
+  --text:#f4f0e7;
+  --muted:#aaa69e;
+  --gold:#c8a45e;
+  --line:rgba(200,164,94,.25);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Montserrat,Arial,sans-serif;
+  line-height:1.6;
+  position:relative;
+}
+
+/* LOGO COMO MARCA DE AGUA DETRÁS DE TODA LA PÁGINA */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(8,9,8,.78),rgba(8,9,8,.78)),
+    url("logo.png") center center / 620px auto no-repeat;
+  opacity:.55;
+  pointer-events:none;
+  z-index:0;
+}
+
+body>*{
+  position:relative;
+  z-index:1;
+}
+
+a{color:inherit;text-decoration:none}
+
+.hero{
+  min-height:92vh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.40)),
+    radial-gradient(circle at 75% 35%,rgba(200,164,94,.17),transparent 30%),
+    linear-gradient(135deg,#090a09,#17150f 55%,#070807);
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 72%,var(--bg));
+  pointer-events:none;
+}
+
+.nav{
+  width:min(1180px,92%);
+  margin:auto;
+  padding:25px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2.5px;
+}
+
+.brand span{color:var(--gold)}
+
+.nav-btn{
+  border:1px solid var(--line);
+  padding:11px 18px;
+  font-size:10px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.hero-content{
+  width:min(1180px,92%);
+  margin:auto;
+  position:relative;
+  z-index:2;
+  padding:80px 0;
+}
+
+.eyebrow{
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+h1,h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:600;
+  line-height:.98;
+}
+
+h1{
+  font-size:clamp(58px,9vw,112px);
+  max-width:1100px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.venue-name{
+  color:var(--text);
+  font-weight:700;
+}
+
+h1 em,h2 em{
+  color:var(--gold);
+  font-style:italic;
+}
+
+.hero-text{
+  max-width:540px;
+  color:#c9c4bc;
+  margin:25px 0 34px;
+  font-size:16px;
+}
+
+.gold-btn{
+  display:inline-block;
+  background:var(--gold);
+  color:#111;
+  padding:15px 24px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.section{
+  width:min(1180px,92%);
+  margin:auto;
+  padding:105px 0;
+}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  border-bottom:1px solid var(--line);
+}
+
+h2{font-size:clamp(42px,5vw,68px)}
+
+.about-text{
+  color:var(--muted);
+  font-size:15px;
+  align-self:end;
+  padding-bottom:8px;
+}
+
+.gallery{border-bottom:1px solid var(--line)}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+}
+
+.upload-btn{
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:12px 18px;
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.upload-btn input{display:none}
+
+.hint{
+  color:#777;
+  font-size:12px;
+  margin:18px 0 28px;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.gallery-grid .photo-card:first-child{
+  grid-column:span 2;
+}
+
+.empty-card{
+  min-height:280px;
+  border:1px dashed #3d362c;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+  grid-column:1/-1;
+}
+
+.empty-card .camera{
+  font-size:35px;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+
+.empty-card h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;
+}
+
+.empty-card p{
+  color:#777;
+  max-width:480px;
+  font-size:12px;
+}
+
+.photo-card{
+  height:310px;
+  cursor:pointer;
+  overflow:hidden;
+  background:#111;
+}
+
+.photo-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s;
+}
+
+.photo-card:hover img{transform:scale(1.04)}
+
+
+/* ===== RESPONSIVE: CELULAR, TABLET Y COMPUTADORA ===== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 980px){
+  .nav{
+    width:min(92%, 900px);
+  }
+
+  .hero-content,
+  .section{
+    width:min(92%, 900px);
+  }
+
+  h1{
+    font-size:clamp(54px, 9vw, 86px);
+  }
+
+  .about,
+  .contact{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+
+  .about-text{
+    max-width:720px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+
+  .gallery-grid .photo-card:first-child{
+    grid-column:auto;
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+}
+
+/* Celulares */
+@media (max-width: 700px){
+  html{
+    overflow-x:hidden;
+  }
+
+  body{
+    overflow-x:hidden;
+  }
+
+  body::before{
+    background:
+      linear-gradient(rgba(8,9,8,.84),rgba(8,9,8,.84)),
+      url("logo.png") center center / min(360px, 78vw) auto no-repeat;
+  }
+
+  .hero{
+    min-height:100svh;
+  }
+
+  .nav{
+    width:calc(100% - 32px);
+    padding:18px 0;
+  }
+
+  .brand{
+    font-size:clamp(15px, 4vw, 20px);
+    letter-spacing:1.8px;
+  }
+
+  .nav-btn{
+    display:none;
+  }
+
+  .hero-content{
+    width:calc(100% - 32px);
+    padding:55px 0 70px;
+  }
+
+  .eyebrow{
+    font-size:9px;
+    line-height:1.6;
+    letter-spacing:2px;
+  }
+
+  h1{
+    font-size:clamp(40px, 12vw, 68px);
+    line-height:.94;
+    letter-spacing:.2px;
+    overflow-wrap:anywhere;
+  }
+
+  .hero-text{
+    font-size:14px;
+    max-width:95%;
+    margin:20px 0 28px;
+  }
+
+  .gold-btn{
+    padding:14px 18px;
+    font-size:9px;
+  }
+
+  .section{
+    width:calc(100% - 32px);
+    padding:68px 0;
+  }
+
+  h2{
+    font-size:clamp(38px, 11vw, 58px);
+  }
+
+  .section-heading{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+  .upload-btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .photo-card{
+    height:auto;
+    aspect-ratio:4 / 3;
+  }
+
+  .photo-card img{
+    display:block;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-top:35px;
+  }
+
+  .feature-grid article{
+    padding:20px 0;
+  }
+
+  .feature-grid h3{
+    font-size:28px;
+  }
+
+  .contact{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .whatsapp-list a{
+    font-size:13px;
+    gap:15px;
+  }
+
+  footer{
+    width:calc(100% - 32px);
+    flex-direction:column;
+    align-items:flex-start;
+    padding-bottom:32px;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 400px){
+  .hero-content{
+    padding-top:42px;
+  }
+
+  h1{
+    font-size:clamp(35px, 11.5vw, 48px);
+  }
+
+  .venue-name{
+    letter-spacing:-.4px;
+  }
+
+  .section{
+    padding:58px 0;
+  }
+
+  .whatsapp-list a{
+    font-size:12px;
+  }
+}
+
+
+/* ===== RESERVAS MÁS GRANDES ===== */
+.contact{
+  min-height:72vh;
+  padding-top:120px;
+  padding-bottom:120px;
+}
+
+.contact h2{
+  font-size:clamp(58px, 7vw, 96px);
+  line-height:.92;
+}
+
+.contact p:not(.eyebrow){
+  font-size:17px;
+  line-height:1.8;
+  max-width:620px;
+}
+
+.whatsapp-list{
+  gap:8px;
+}
+
+.whatsapp-list a{
+  padding:25px 0;
+  font-size:clamp(16px, 1.6vw, 22px);
+  font-weight:600;
+}
+
+@media (max-width:700px){
+  .contact{
+    min-height:auto;
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .contact h2{
+    font-size:clamp(48px, 13vw, 68px);
+  }
+
+  .contact p:not(.eyebrow){
+    font-size:15px;
+  }
+
+  .whatsapp-list a{
+    padding:20px 0;
+    font-size:15px;
+  }
+}
+
+
+/* ===== RESERVAS: CENTRADO Y SEPARADO ===== */
+.contact{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:0;
+  min-height:78vh;
+}
+
+.contact > div:first-child{
+  width:100%;
+  max-width:900px;
+}
+
+.contact h2{
+  margin-bottom:0;
+}
+
+.contact p:not(.eyebrow){
+  margin:32px auto 0;
+  max-width:680px;
+  font-size:17px;
+  line-height:1.8;
+}
+
+.whatsapp-list{
+  width:min(720px, 100%);
+  margin:75px auto 0;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+
+.whatsapp-list a{
+  justify-content:center;
+  gap:14px;
+  padding:28px 12px;
+  font-size:clamp(18px, 2vw, 25px);
+  font-weight:600;
+  border-bottom:1px solid var(--line);
+}
+
+.whatsapp-list a:first-child{
+  border-top:1px solid var(--line);
+}
+
+.whatsapp-list span{
+  font-size:18px;
+}
+
+@media (max-width:700px){
+  .contact{
+    min-height:auto;
+    padding-top:75px;
+    padding-bottom:75px;
+  }
+
+  .contact p:not(.eyebrow){
+    margin-top:26px;
+    font-size:15px;
+  }
+
+  .whatsapp-list{
+    width:100%;
+    margin-top:55px;
+  }
+
+  .whatsapp-list a{
+    padding:23px 8px;
+    font-size:16px;
+  }
+}
+
+/* Logo superior visible junto a UBICACIÓN */
+.nav-logo-top{
+  display:inline-block !important;
+  width:64px !important;
+  height:64px !important;
+  object-fit:contain !important;
+  vertical-align:middle !important;
+  margin-left:16px !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  position:relative !important;
+  z-index:10 !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:48px !important;
+    height:48px !important;
+    margin-left:8px !important;
+  }
+}
+
+/* LOGO EN PRIMER PLANO: visible delante de todo */
+.nav-logo-top{
+  display:block !important;
+  width:72px !important;
+  height:72px !important;
+  max-width:72px !important;
+  max-height:72px !important;
+  object-fit:contain !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  position:relative !important;
+  z-index:9999 !important;
+  flex:0 0 auto !important;
+  margin:0 16px 0 0 !important;
+  filter:none !important;
+}
+.nav-logo-top + a{
+  position:relative !important;
+  z-index:10000 !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:54px !important;
+    height:54px !important;
+    max-width:54px !important;
+    max-height:54px !important;
+    margin-right:8px !important;
+  }
+}
+
+/* Logo superior más grande */
+.nav-logo-top{
+  width:160px !important;
+  height:160px !important;
+  max-width:160px !important;
+  max-height:160px !important;
+  margin-right:24px !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:95px !important;
+    height:95px !important;
+    max-width:95px !important;
+    max-height:95px !important;
+    margin-right:12px !important;
+  }
+}
+
+/* Logo superior EXTRA GRANDE */
+.nav-logo-top{
+  width:200px !important;
+  height:200px !important;
+  max-width:200px !important;
+  max-height:200px !important;
+  margin-right:28px !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:110px !important;
+    height:110px !important;
+    max-width:110px !important;
+    max-height:110px !important;
+    margin-right:12px !important;
+  }
+}
+
+/* Logo superior extra grande */
+.nav-logo-top{
+  width:250px !important;
+  height:250px !important;
+  max-width:250px !important;
+  max-height:250px !important;
+  margin-right:28px !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:120px !important;
+    height:120px !important;
+    max-width:120px !important;
+    max-height:120px !important;
+    margin-right:12px !important;
+  }
+}
+
+/* Logo superior 320 px */
+.nav-logo-top{
+  width:320px !important;
+  height:320px !important;
+  max-width:320px !important;
+  max-height:320px !important;
+  margin-right:30px !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:145px !important;
+    height:145px !important;
+    max-width:145px !important;
+    max-height:145px !important;
+    margin-right:12px !important;
+  }
+}
+
+/* Logo superior 360px */
+.nav-logo-top{
+  width:360px !important;
+  height:360px !important;
+  max-width:360px !important;
+  max-height:360px !important;
+}
+@media (max-width:700px){
+  .nav-logo-top{
+    width:160px !important;
+    height:160px !important;
+    max-width:160px !important;
+    max-height:160px !important;
+  }
+}
+
+/* TIPOGRAFIA MAS VISIBLE - LOS SIETE ARCOS */
+.eyebrow{
+  font-size:16px !important;
+  letter-spacing:4px !important;
+  line-height:1.5 !important;
+  margin-bottom:24px !important;
+}
+
+.hero-text{
+  font-size:24px !important;
+  line-height:1.6 !important;
+  max-width:760px !important;
+  margin:30px 0 38px !important;
+}
+
+.about h2,
+.gallery h2,
+.features h2,
+.contact h2{
+  font-size:clamp(52px,6vw,82px) !important;
+  line-height:1.05 !important;
+}
+
+.section-heading .eyebrow,
+.features > .eyebrow,
+.contact .eyebrow,
+.about .eyebrow{
+  font-size:17px !important;
+  letter-spacing:4px !important;
+}
+
+.hint,
+.contact > div:first-child > p:not(.eyebrow),
+.about-text{
+  font-size:18px !important;
+  line-height:1.8 !important;
+}
+
+.features h3{
+  font-size:28px !important;
+}
+
+.features article p{
+  font-size:17px !important;
+  line-height:1.7 !important;
+}
+
+@media (max-width:700px){
+  .eyebrow{
+    font-size:12px !important;
+    letter-spacing:2.5px !important;
+    line-height:1.6 !important;
+  }
+
+  .hero-text{
+    font-size:19px !important;
+    line-height:1.55 !important;
+    max-width:100% !important;
+    margin:24px 0 32px !important;
+  }
+
+  .about h2,
+  .gallery h2,
+  .features h2,
+  .contact h2{
+    font-size:clamp(42px,11vw,62px) !important;
+    line-height:1.04 !important;
+  }
+
+  .section-heading .eyebrow,
+  .features > .eyebrow,
+  .contact .eyebrow,
+  .about .eyebrow{
+    font-size:13px !important;
+    letter-spacing:2.5px !important;
+  }
+
+  .hint,
+  .contact > div:first-child > p:not(.eyebrow),
+  .about-text{
+    font-size:16px !important;
+    line-height:1.7 !important;
+  }
+
+  .features h3{
+    font-size:25px !important;
+  }
+
+  .features article p{
+    font-size:16px !important;
+  }
+}
+
+
+/* AJUSTES SOLICITADOS */
+.brand{font-size:20px !important;letter-spacing:3px !important}
+.nav-btn{font-size:14px !important;padding:14px 24px !important;letter-spacing:1.8px !important}
+.about h2{font-size:clamp(58px,6.5vw,90px) !important}
+.features-description{max-width:1050px;margin-top:48px}
+.features-description p{font-size:21px;line-height:1.9;color:#d8d2c8;letter-spacing:.2px}
+
+@media (max-width:700px){
+  .brand{font-size:15px !important;letter-spacing:2px !important}
+  .nav-btn{font-size:10px !important;padding:11px 14px !important;letter-spacing:1.1px !important}
+  .about h2{font-size:clamp(46px,12vw,68px) !important}
+  .features-description{margin-top:32px}
+  .features-description p{font-size:17px;line-height:1.8}
+}
+
+/* TITULO NUESTRO ESPACIO EN SOLO 2 LINEAS */
+.about-title{
+  width:100%;
+  max-width:1100px;
+  font-size:clamp(42px,5vw,68px) !important;
+  line-height:1.05 !important;
+}
+.about-title span{display:block; white-space:nowrap;}
+@media (max-width:700px){
+  .about-title{font-size:clamp(24px,6.8vw,42px) !important; line-height:1.12 !important;}
+  .about-title span{white-space:nowrap;}
+}
